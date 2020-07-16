@@ -3,6 +3,7 @@ package java8.ex02;
 import java8.data.Account;
 import java8.data.Data;
 import java8.data.Person;
+
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -35,9 +36,11 @@ public class Lambda_02_Test {
 
         List<Person> personList = Data.buildPersonList(100);
 
-        // TODO transformer la liste de personnes en liste de comptes
-        // TODO tous les objets comptes ont un solde à 100 par défaut
-        List<Account> result = map(personList, null);
+        // transformer la liste de personnes en liste de comptes
+        // tous les objets comptes ont un solde à 100 par défaut
+        PersonToAccountMapper mapper = p -> new Account(p, 100);
+        
+        List<Account> result = map(personList, mapper);
 
         assert result.size() == personList.size();
         for (Account account : result) {
