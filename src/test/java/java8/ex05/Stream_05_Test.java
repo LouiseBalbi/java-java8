@@ -33,8 +33,8 @@ public class Stream_05_Test {
     // TODO compléter la méthode iterateSum
     // TODO utiliser la méthode Stream.iterate
     // TODO cette méthode doit produire le même résultat que imperativeSum
-    private long iterateSum(long n) {
-        return 0;
+    private long iterateSum(long n) {	
+        return LongStream.iterate(new Long(0), i -> i + 1).limit(n).sum();
     }
 
     // TODO exécuter le test pour vérifier que les méthodes imperativeSum et iterateSum produisent le même résultat
@@ -53,7 +53,7 @@ public class Stream_05_Test {
     // TODO utiliser la méthode Stream.iterate
     // TODO transformer en stream parallel (.parallel())
     private long parallelIterateSum(long n) {
-        return 0;
+        return LongStream.iterate(new Long(0), i -> i+1).parallel().limit(n).sum();
     }
 
     // TODO exécuter le test pour vérifier que les méthodes imperativeSum, iterateSum et parallelIterateSum produisent le même résultat
